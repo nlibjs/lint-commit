@@ -3,7 +3,7 @@
     "publishConfig": {
         "access": "public"
     },
-    "version": "0.0.0",
+    "version": "0.1.0",
     "license": "Apache-2.0",
     "author": {
         "name": "Kei Ito",
@@ -31,8 +31,8 @@
         "test:type": "tsc --noEmit",
         "test:ava": "ava",
         "lint": "eslint --ext .ts --ext .js src",
-        "version": "run-s version:*",
-        "version:changelog": "ts-node src/cli.ts --output CHANGELOG.md",
+        "version": "run-s version:changelog version:add",
+        "version:changelog": "nlib-changelog --output CHANGELOG.md",
         "version:add": "git add ."
     },
     "dependencies": {
@@ -41,7 +41,7 @@
         "@nlib/typing": "^0.1.4"
     },
     "devDependencies": {
-        "@nlib/changelog": "^0.1.5",
+        "@nlib/changelog": "^0.1.7",
         "@nlib/eslint-config": "^3.17.12",
         "@nlib/test": "^3.18.6",
         "@types/node": "^14.11.2",
