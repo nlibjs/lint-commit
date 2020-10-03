@@ -43,10 +43,11 @@ export const nlibLintCommitCLI = async (
     } else {
         const props = parse(args);
         const messageFile = await getCommitMessageFile(props.input);
-        const {error} = parseMessage(await fs.promises.readFile(messageFile, 'utf8'));
-        if (error) {
-            throw error;
+        const result = parseMessage(await fs.promises.readFile(messageFile, 'utf8'));
+        if (result.error) {
+            throw result.error;
         }
+        console.log(result);
     }
 };
 
