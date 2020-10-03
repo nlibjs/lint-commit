@@ -1,0 +1,106 @@
+{
+    "name": "@nlib/lint-commit",
+    "publishConfig": {
+        "access": "public"
+    },
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Kei Ito",
+        "email": "kei.itof@gmail.com",
+        "url": "https://github.com/kei-ito"
+    },
+    "homepage": "https://github.com/nlibjs/lint-commit",
+    "repository": "https://github.com/nlibjs/lint-commit",
+    "engines": {
+        "node": ">=12"
+    },
+    "main": "lib/index.js",
+    "files": [
+        "lib",
+        "!*.test.*"
+    ],
+    "bin": {
+        "nlib-lint-commit": "lib/cli.js"
+    },
+    "scripts": {
+        "build": "run-s build:*",
+        "build:index": "indexen --input src --output src/index.ts",
+        "build:tsc": "tsc",
+        "test": "run-s test:*",
+        "test:type": "tsc --noEmit",
+        "test:ava": "ava",
+        "lint": "eslint --ext .ts --ext .js src",
+        "version": "run-s version:*",
+        "version:changelog": "ts-node src/cli.ts --output CHANGELOG.md",
+        "version:add": "git add ."
+    },
+    "dependencies": {
+        "@nlib/global": "^3.18.0",
+        "@nlib/nodetool": "^0.1.10",
+        "@nlib/typing": "^0.1.4"
+    },
+    "devDependencies": {
+        "@nlib/changelog": "^0.1.5",
+        "@nlib/eslint-config": "^3.17.12",
+        "@nlib/test": "^3.18.6",
+        "@types/node": "^14.11.2",
+        "@typescript-eslint/eslint-plugin": "^4.1.1",
+        "@typescript-eslint/parser": "^4.1.1",
+        "ava": "^3.12.1",
+        "eslint": "^7.9.0",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.4.0",
+        "npm-run-all": "^4.1.5",
+        "ts-node": "^9.0.0",
+        "typescript": "^4.0.2"
+    },
+    "ava": {
+        "extensions": [
+            "ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ]
+    },
+    "eslintConfig": {
+        "extends": [
+            "@nlib"
+        ],
+        "env": {
+            "node": true
+        },
+        "rules": {
+            "@nlib/no-globals": [
+                "error",
+                {
+                    "allowed": [
+                        "module",
+                        "process",
+                        "require",
+                        "__dirname"
+                    ]
+                }
+            ]
+        }
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "ts-node src/cli.ts --input HUSKY_GIT_PARAMS",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.ts": [
+            "eslint"
+        ],
+        "*.js": [
+            "eslint"
+        ]
+    },
+    "renovate": {
+        "extends": [
+            "github>nlibjs/renovate-config"
+        ]
+    }
+}
