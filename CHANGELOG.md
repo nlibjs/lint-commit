@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.7 (2020-10-03)
+
+### Tests
+
+- set timeout (17593a4)
+
+
 ## v0.1.1 (2020-10-03)
 
 ### Features
