@@ -10,6 +10,8 @@ import {
 } from '@nlib/nodetool';
 import {getCommitMessageFile} from './getCommitMessageFile';
 import {parseMessage} from './parseMessage';
+import {ignorePatterns} from './ignore';
+import {checkString} from './checkString';
 
 const parse = createCLIArgumentsParser({
     input: {
@@ -43,11 +45,14 @@ export const nlibLintCommitCLI = async (
     } else {
         const props = parse(args);
         const messageFile = await getCommitMessageFile(props.input);
-        const result = parseMessage(await fs.promises.readFile(messageFile, 'utf8'));
-        if (result.error) {
-            throw result.error;
+        const message = await fs.promises.readFile(messageFile, 'utf8');
+        if (ignorePatterns.every((pattern) => !checkString(message, pattern))) {
+            const result = parseMessage(message);
+            if (result.error) {
+                throw result.error;
+            }
+            console.log(result);
         }
-        console.log(result);
     }
 };
 

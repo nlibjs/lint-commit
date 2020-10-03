@@ -19,6 +19,14 @@ ava('lint a commit message', async (t) => {
     t.pass();
 });
 
+ava('ignore message', async (t) => {
+    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'indexen'));
+    const messageFile = path.join(directory, 'COMMIT_EDITMSG');
+    await afs.writeFile(messageFile, '1.2.3');
+    await exec(`npx ts-node ${scriptPath} --input ${messageFile}`);
+    t.pass();
+});
+
 ava('lint an invalid commit message', async (t) => {
     const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'indexen'));
     const messageFile = path.join(directory, 'COMMIT_EDITMSG');
