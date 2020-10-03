@@ -99,7 +99,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           registry-url: https://registry.npmjs.org
-      - run: npx ts-node src/cleanupPackageJsonCLI.ts --file package.json
+      - run: npx cleanup-package-json --file package.json
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
