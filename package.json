@@ -36,26 +36,26 @@
         "version:add": "git add ."
     },
     "dependencies": {
-        "@nlib/global": "^3.18.0",
-        "@nlib/nodetool": "^0.1.10",
-        "@nlib/typing": "^0.2.0",
-        "semver": "^7.3.2"
+        "@nlib/global": "3.18.0",
+        "@nlib/nodetool": "0.1.10",
+        "@nlib/typing": "0.2.0",
+        "semver": "7.3.2"
     },
     "devDependencies": {
-        "@nlib/changelog": "^0.1.7",
-        "@nlib/eslint-config": "^3.17.12",
-        "@nlib/test": "^3.18.6",
-        "@types/node": "^14.11.2",
-        "@types/semver": "^7.3.4",
-        "@typescript-eslint/eslint-plugin": "^4.1.1",
-        "@typescript-eslint/parser": "^4.1.1",
-        "ava": "^3.12.1",
-        "eslint": "^7.9.0",
-        "husky": "^4.3.0",
-        "lint-staged": "^10.4.0",
-        "npm-run-all": "^4.1.5",
-        "ts-node": "^9.0.0",
-        "typescript": "^4.0.2"
+        "@nlib/changelog": "0.1.7",
+        "@nlib/eslint-config": "3.17.12",
+        "@nlib/test": "3.18.6",
+        "@types/node": "14.11.2",
+        "@types/semver": "7.3.4",
+        "@typescript-eslint/eslint-plugin": "4.3.0",
+        "@typescript-eslint/parser": "4.3.0",
+        "ava": "3.13.0",
+        "eslint": "7.10.0",
+        "husky": "4.3.0",
+        "lint-staged": "10.4.0",
+        "npm-run-all": "4.1.5",
+        "ts-node": "9.0.0",
+        "typescript": "4.0.3"
     },
     "ava": {
         "extensions": [
