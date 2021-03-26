@@ -39,7 +39,7 @@
         "@nlib/global": "3.18.0",
         "@nlib/nodetool": "0.1.11",
         "@nlib/typing": "0.2.0",
-        "semver": "7.3.4"
+        "semver": "7.3.5"
     },
     "devDependencies": {
         "@nlib/changelog": "0.1.9",
