@@ -1,4 +1,4 @@
-import {Error} from '@nlib/global';
+import type {Error} from '@nlib/global';
 
 export type StringMatcher =
 | Array<string>

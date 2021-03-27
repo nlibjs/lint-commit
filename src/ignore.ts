@@ -1,5 +1,5 @@
 import * as semver from 'semver';
-import {StringMatcher} from './types';
+import type {StringMatcher} from './types';
 
 export const ignorePatterns: Array<StringMatcher> = [
     /^Merged? /m,
