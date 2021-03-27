@@ -1,6 +1,13 @@
 # Changelog
 
-## v0.1.7 (2020-10-03)
+## v0.1.4 (2021-03-27)
+
+### Dependency Upgrades
+
+- @nlib/eslint-config:3.17.16→3.17.21 @nlib/nodetool:0.1.11→0.1.1… (#102) (ce945a2)
+
+
+## v0.1.3 (2020-10-03)
 
 ### Documentation
 
