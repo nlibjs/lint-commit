@@ -18,7 +18,8 @@
     "main": "lib/index.js",
     "files": [
         "lib",
-        "!*.test.*"
+        "!*.test.*",
+        "!*.map"
     ],
     "bin": {
         "nlib-lint-commit": "lib/cli.js"
@@ -37,21 +38,21 @@
     },
     "dependencies": {
         "@nlib/global": "3.18.0",
-        "@nlib/nodetool": "0.1.11",
+        "@nlib/nodetool": "0.1.16",
         "@nlib/typing": "0.2.0",
         "semver": "7.3.5"
     },
     "devDependencies": {
         "@nlib/changelog": "0.1.9",
-        "@nlib/eslint-config": "3.17.16",
+        "@nlib/eslint-config": "3.17.21",
+        "@nlib/githooks": "0.0.5",
         "@nlib/test": "3.18.6",
-        "@types/node": "14.14.35",
+        "@types/node": "14.14.37",
         "@types/semver": "7.3.4",
         "@typescript-eslint/eslint-plugin": "4.19.0",
         "@typescript-eslint/parser": "4.19.0",
         "ava": "3.15.0",
-        "eslint": "7.22.0",
-        "husky": "4.3.8",
+        "eslint": "7.23.0",
         "lint-staged": "10.5.4",
         "npm-run-all": "4.1.5",
         "ts-node": "9.1.1",
@@ -85,12 +86,6 @@
                     ]
                 }
             ]
-        }
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "ts-node src/cli.ts --input HUSKY_GIT_PARAMS",
-            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {

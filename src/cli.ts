@@ -3,6 +3,7 @@ import * as process from 'process';
 import * as console from 'console';
 import * as fs from 'fs';
 import * as path from 'path';
+import type {Writable} from 'stream';
 import {
     createCLIArgumentsParser,
     getVersion,
@@ -33,7 +34,7 @@ const parse = createCLIArgumentsParser({
 
 export const nlibLintCommitCLI = async (
     args: Array<string>,
-    stdout: NodeJS.WritableStream = process.stdout,
+    stdout: Writable = process.stdout,
 ) => {
     if (args.includes('--help') || args.includes('-h')) {
         stdout.write('nlib-changelog --output path/to/changelog.md\n\n');

@@ -1,6 +1,7 @@
-import {AppError, CodeTester, findIndexOfCharCode} from '@nlib/global';
+import type {CodeTester} from '@nlib/global';
+import {AppError, findIndexOfCharCode} from '@nlib/global';
 import {checkString} from './checkString';
-import {ParseMessageError, ParseMessageResult, MessageConfig} from './types';
+import type {ParseMessageError, ParseMessageResult, MessageConfig} from './types';
 
 export const DefaultMessageConfig: MessageConfig = {
     type: [
@@ -33,7 +34,7 @@ const isEndOfScope: CodeTester = (code) => code === RightParenthesis;
 export const parseSubjectLine = (
     line: string,
     messageConfig: Partial<MessageConfig> = {},
-): ParseMessageResult | ParseMessageError => {
+): ParseMessageError | ParseMessageResult => {
     const config = {...DefaultMessageConfig, ...messageConfig};
     let index = findIndexOfCharCode(line, isEndOfType, 0);
     const type = line.slice(0, index);
