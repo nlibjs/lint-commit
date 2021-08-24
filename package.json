@@ -47,7 +47,7 @@
         "@nlib/eslint-config": "3.17.23",
         "@nlib/githooks": "0.0.5",
         "@nlib/test": "3.18.7",
-        "@types/node": "15.14.7",
+        "@types/node": "15.14.9",
         "@types/semver": "7.3.8",
         "@typescript-eslint/eslint-plugin": "4.29.2",
         "@typescript-eslint/parser": "4.29.2",
