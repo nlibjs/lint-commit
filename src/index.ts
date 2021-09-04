@@ -2,6 +2,7 @@
 export * from './checkString';
 export * from './cli';
 export * from './getCommitMessageFile';
+export * from './ignore';
 export * from './parseMessage';
 export * from './parseSubjectLine';
 export * from './readNonCommentLine';
