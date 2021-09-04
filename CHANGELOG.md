@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.7 (2021-09-04)
+
+### Continuous Integration
+
+- fix release script ([c16263d](https://github.com/nlibjs/lint-commit/commit/c16263d5c36c8a77183589f0ff393549e1830722))
+
+
 ## v0.1.6 (2021-09-04)
 
 ### Documentation
