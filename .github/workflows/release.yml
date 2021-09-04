@@ -12,6 +12,8 @@ jobs:
           node-version: 16.x
           cache: npm
           registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm build
       - run: npx cleanup-package-json --file package.json
       - run: npm publish
         env:
