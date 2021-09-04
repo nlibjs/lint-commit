@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.6 (2021-09-04)
+
+### Documentation
+
+- update usage and a badge ([18ebf35](https://github.com/nlibjs/lint-commit/commit/18ebf35abdd01e62a1dea894684369f47928a8d3))
+
+### Continuous Integration
+
+- fix release script ([d5b7f26](https://github.com/nlibjs/lint-commit/commit/d5b7f26cb32eb29df04f7b5ad97a3132ab52f3dd))
+
+
 ## v0.1.5 (2021-09-04)
 
 ### Continuous Integration
