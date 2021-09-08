@@ -43,7 +43,7 @@
     },
     "devDependencies": {
         "@nlib/eslint-config": "3.17.25",
-        "@nlib/githooks": "0.0.5",
+        "@nlib/githooks": "0.1.0",
         "@nlib/test": "3.18.7",
         "@types/node": "16.7.10",
         "@types/semver": "7.3.8",
