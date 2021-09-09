@@ -1,5 +1,4 @@
 import type {StringMatcher} from './types';
-import {Array} from '@nlib/global';
 
 export const checkString = (
     input: string,

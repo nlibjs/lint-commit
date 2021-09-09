@@ -1,5 +1,5 @@
-import {AppError} from '@nlib/global';
 import {statOrNull} from '@nlib/nodetool';
+import {LintError} from './LintError.private';
 
 export const getCommitMessageFile = async (
     filePathOrEnvironmentVariableName: string,
@@ -15,8 +15,8 @@ export const getCommitMessageFile = async (
             return environmentValue;
         }
     }
-    throw new AppError({
+    throw new LintError({
         code: 'NoMessageFile',
-        data: filePathOrEnvironmentVariableName,
+        message: 'Cannot find the message file',
     });
 };

@@ -1,7 +1,5 @@
-import type {CodeTester} from '@nlib/global';
-import {findIndexOfCharCode} from '@nlib/global';
 import {checkString} from './checkString';
-import {LintError} from './LintError';
+import {LintError} from './LintError.private';
 import type {ParseMessageResult, MessageConfig} from './types';
 
 export const DefaultMessageConfig: MessageConfig = {
@@ -29,8 +27,8 @@ const Space = 0x20;
 const LeftParenthesis = 0x28;
 const RightParenthesis = 0x29;
 const Colon = 0x3A;
-const isEndOfType: CodeTester = (code) => code === LeftParenthesis || code === Colon;
-const isEndOfScope: CodeTester = (code) => code === RightParenthesis;
+const isEndOfType = (code: number) => code === LeftParenthesis || code === Colon;
+const isEndOfScope = (code: number) => code === RightParenthesis;
 
 export const parseSubjectLine = (
     line: string,
@@ -79,7 +77,7 @@ const getType = (
     config: MessageConfig,
     fromIndex: number,
 ) => {
-    let endIndex = findIndexOfCharCode(line, isEndOfType, fromIndex);
+    let endIndex = findIndexOfCodePoint(line, isEndOfType, fromIndex);
     if (endIndex < 0) {
         endIndex = 0;
     }
@@ -108,7 +106,7 @@ const getScope = (
     let index = fromIndex;
     if (line.charCodeAt(index) === LeftParenthesis) {
         const scopeStart = index + 1;
-        const scopeEnd = findIndexOfCharCode(line, isEndOfScope, scopeStart);
+        const scopeEnd = findIndexOfCodePoint(line, isEndOfScope, scopeStart);
         if (scopeEnd < 0) {
             throw new LintError({
                 code: 'UnclosedParenthesis',
@@ -125,4 +123,23 @@ const getScope = (
         index = scopeEnd + 1;
     }
     return {value: scope, endIndex: index};
+};
+
+const findIndexOfCodePoint = (
+    source: string,
+    test: (codePoint: number) => boolean,
+    index = 0,
+) => {
+    const {length} = source;
+    while (index < length) {
+        const codePoint = source.codePointAt(index);
+        if (typeof codePoint !== 'number') {
+            break;
+        }
+        if (test(codePoint)) {
+            return index;
+        }
+        index += 0x10000 < codePoint ? 2 : 1;
+    }
+    return -1;
 };
