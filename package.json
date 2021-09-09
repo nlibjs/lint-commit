@@ -62,6 +62,9 @@
         ],
         "env": {
             "node": true
+        },
+        "rules": {
+            "@nlib/no-globals": "off"
         }
     },
     "ava": {
