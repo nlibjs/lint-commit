@@ -1,6 +1,7 @@
 import type {CodeTester} from '@nlib/global';
-import {AppError, findIndexOfCharCode} from '@nlib/global';
+import {findIndexOfCharCode} from '@nlib/global';
 import {checkString} from './checkString';
+import {LintError} from './LintError';
 import type {ParseMessageError, ParseMessageResult, MessageConfig} from './types';
 
 export const DefaultMessageConfig: MessageConfig = {
@@ -36,35 +37,92 @@ export const parseSubjectLine = (
     messageConfig: Partial<MessageConfig> = {},
 ): ParseMessageError | ParseMessageResult => {
     const config = {...DefaultMessageConfig, ...messageConfig};
-    let index = findIndexOfCharCode(line, isEndOfType, 0);
-    const type = line.slice(0, index);
-    if (!checkString(type, config.type)) {
-        throw new AppError({code: 'InvaildCommitType', data: {line, config}});
+    const type = getType(line, config, 0);
+    const scope = getScope(line, config, type.endIndex);
+    let index = scope.endIndex;
+    if (line.charCodeAt(index) === Colon) {
+        index += 1;
+    } else {
+        throw new LintError({
+            code: 'NoColon',
+            message: 'Please put ":" before the subject',
+        });
     }
+    if (line.charCodeAt(index) !== Space) {
+        throw new LintError({
+            code: 'NoSpaceBeforeSubject',
+            message: 'Please put a space between ":" and the subject',
+        });
+    }
+    const subject = line.slice(index + 1);
+    if (!subject) {
+        throw new LintError({
+            code: 'NoSubject',
+            message: 'Please specify the subject of this commit.',
+        });
+    }
+    if (!checkString(subject, config.subject)) {
+        throw new LintError({
+            code: 'InvalidSubject',
+            message: 'The subject is invalid.',
+        });
+    }
+    return {
+        type: type.value,
+        scope: scope.value,
+        subject,
+    };
+};
+
+const getType = (
+    line: string,
+    config: MessageConfig,
+    fromIndex: number,
+) => {
+    let endIndex = findIndexOfCharCode(line, isEndOfType, fromIndex);
+    if (endIndex < 0) {
+        endIndex = 0;
+    }
+    const type = line.slice(0, endIndex);
+    if (!type) {
+        throw new LintError({
+            code: 'NoCommitType',
+            message: 'Please specify the type at the beginning of the message.',
+        });
+    }
+    if (!checkString(type, config.type)) {
+        throw new LintError({
+            code: 'InvaildCommitType',
+            message: `"${type}" is an invalid commit type.`,
+        });
+    }
+    return {value: type, endIndex};
+};
+
+const getScope = (
+    line: string,
+    config: MessageConfig,
+    fromIndex: number,
+) => {
     let scope: string | null = null;
+    let index = fromIndex;
     if (line.charCodeAt(index) === LeftParenthesis) {
         const scopeStart = index + 1;
         const scopeEnd = findIndexOfCharCode(line, isEndOfScope, scopeStart);
         if (scopeEnd < 0) {
-            return {error: new AppError({code: 'UnclosedParenthesis', data: {line, config}})};
+            throw new LintError({
+                code: 'UnclosedParenthesis',
+                message: 'Please add ")" to the end of the scope.',
+            });
         }
         scope = line.slice(scopeStart, scopeEnd);
         if (!checkString(scope, config.scope)) {
-            return {error: new AppError({code: 'InvalidScope', data: {scope, config}})};
+            throw new LintError({
+                code: 'InvaildCommitScope',
+                message: `"${scope}" is an invalid commit scope.`,
+            });
         }
         index = scopeEnd + 1;
     }
-    if (line.charCodeAt(index) === Colon) {
-        index += 1;
-    } else {
-        return {error: new AppError({code: 'NoColon', data: {line, config}})};
-    }
-    if (line.charCodeAt(index) !== Space) {
-        return {error: new AppError({code: 'NoSpaceBeforeSubject', data: {line, config}})};
-    }
-    const subject = line.slice(index + 1);
-    if (!checkString(subject, config.subject)) {
-        return {error: new AppError({code: 'InvalidSubject', data: {subject, config}})};
-    }
-    return {type, scope, subject};
+    return {value: scope, endIndex: index};
 };
