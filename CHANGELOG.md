@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.1.8 (2021-09-09)
+
+### Code Refactoring
+
+- remove @nlib/global from src/readNonCommentLine.ts ([828f96d](https://github.com/nlibjs/lint-commit/commit/828f96d4528c508b0418c1206051e1fb3dd2d8d0))
+- remove ParseMessageError ([122b067](https://github.com/nlibjs/lint-commit/commit/122b0677a28b6278e880d6ad3b48edd81a2f1ae7))
+- rewrite parseSubjectLine ([07c4701](https://github.com/nlibjs/lint-commit/commit/07c4701b697ed91a98932882c42deca35a5d5fcc))
+
+### Build System
+
+- fix build:index ([e4ff30e](https://github.com/nlibjs/lint-commit/commit/e4ff30e9fba0c1e28e2f3e8fea3bd606ed489435))
+
+### Continuous Integration
+
+- call cleanup-package-json directly ([59c3410](https://github.com/nlibjs/lint-commit/commit/59c3410043cc3c4a6f3e052695de5e1406138524))
+
+### Dependency Upgrades
+
+- remove @nlib/global ([6bf15d3](https://github.com/nlibjs/lint-commit/commit/6bf15d32059a2d9ed13d32fb8bd5915b5e6f07ce))
+- @nlib/githooks:0.0.5→0.1.0 @nlib/nodetool:0.3.0→0.4.1 @nlib/test:3.18.7→4.0.0 @nlib/typing:0.2.0→0.2.2 @types/node:16.7.10→16.9.0 @typescript-eslint/eslint-plugin:4.30.0→4.31.0 @typescript-eslint/parser:4.30.0→4.31.0 ([aa676d2](https://github.com/nlibjs/lint-commit/commit/aa676d2bb3b7078c686a043a0f30377e7294bb0a))
+
+
 ## v0.1.7 (2021-09-04)
 
 ### Continuous Integration
