@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import * as process from 'process';
 import * as console from 'console';
+import * as util from 'util';
 import * as fs from 'fs';
 import * as path from 'path';
 import type {Writable} from 'stream';
@@ -49,10 +50,7 @@ export const nlibLintCommitCLI = async (
         const message = await fs.promises.readFile(messageFile, 'utf8');
         if (ignorePatterns.every((pattern) => !checkString(message, pattern))) {
             const result = parseMessage(message);
-            if (result.error) {
-                throw result.error;
-            }
-            console.log(result);
+            process.stdout.write(util.inspect(result));
         }
     }
 };

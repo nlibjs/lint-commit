@@ -1,5 +1,3 @@
-import type {Error} from '@nlib/global';
-
 export type StringMatcher =
 | Array<string>
 | RegExp
@@ -18,8 +16,4 @@ export interface ParseMessageResult {
     subject: string,
     body?: string,
     error?: undefined,
-}
-
-export interface ParseMessageError {
-    error: Error,
 }

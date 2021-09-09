@@ -2,7 +2,7 @@ import type {CodeTester} from '@nlib/global';
 import {findIndexOfCharCode} from '@nlib/global';
 import {checkString} from './checkString';
 import {LintError} from './LintError';
-import type {ParseMessageError, ParseMessageResult, MessageConfig} from './types';
+import type {ParseMessageResult, MessageConfig} from './types';
 
 export const DefaultMessageConfig: MessageConfig = {
     type: [
@@ -35,7 +35,7 @@ const isEndOfScope: CodeTester = (code) => code === RightParenthesis;
 export const parseSubjectLine = (
     line: string,
     messageConfig: Partial<MessageConfig> = {},
-): ParseMessageError | ParseMessageResult => {
+): ParseMessageResult => {
     const config = {...DefaultMessageConfig, ...messageConfig};
     const type = getType(line, config, 0);
     const scope = getScope(line, config, type.endIndex);
