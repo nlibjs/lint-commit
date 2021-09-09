@@ -17,7 +17,6 @@
             "@nlib/global": ["@nlib/global/esm"],
             "@nlib/typing": ["@nlib/typing/esm"],
             "@nlib/test": ["@nlib/test/esm"]
-        },
-        "outDir": "lib"
+        }
     }
 }
