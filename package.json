@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "@nlib/nodetool": "0.4.2",
-        "@nlib/typing": "0.2.3",
+        "@nlib/typing": "0.3.4",
         "semver": "7.3.5"
     },
     "devDependencies": {
