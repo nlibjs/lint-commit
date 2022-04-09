@@ -38,7 +38,7 @@
     "dependencies": {
         "@nlib/nodetool": "0.4.2",
         "@nlib/typing": "0.3.4",
-        "semver": "7.3.5"
+        "semver": "7.3.6"
     },
     "devDependencies": {
         "@nlib/eslint-config": "3.17.28",
