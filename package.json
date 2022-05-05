@@ -41,7 +41,7 @@
         "semver": "7.3.7"
     },
     "devDependencies": {
-        "@nlib/eslint-config": "3.17.28",
+        "@nlib/eslint-config": "3.18.0",
         "@nlib/githooks": "0.1.0",
         "@nlib/test": "4.0.0",
         "@types/node": "16.11.27",
