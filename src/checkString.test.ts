@@ -1,12 +1,50 @@
-import {testFunction} from '@nlib/test';
+import ava from 'ava';
 import {checkString} from './checkString';
+interface Case {
+    input: Parameters<typeof checkString>,
+    expected: boolean,
+}
+const cases: Array<Case> = [
+    {
+        input: ['foo', ['foo', 'bar']],
+        expected: true,
+    },
+    {
+        input: ['bar', ['foo', 'bar']],
+        expected: true,
+    },
+    {
+        input: ['baz', ['foo', 'bar']],
+        expected: false,
+    },
+    {
+        input: ['foo', (value: string) => value === 'foo'],
+        expected: true,
+    },
+    {
+        input: ['bar', (value: string) => value === 'foo'],
+        expected: false,
+    },
+    {
+        input: ['fo', /^fo+$/],
+        expected: true,
+    },
+    {
+        input: ['foo', /^fo+$/],
+        expected: true,
+    },
+    {
+        input: ['fooo', /^fo+$/],
+        expected: true,
+    },
+    {
+        input: ['fooo ', /^fo+$/],
+        expected: false,
+    },
+];
 
-testFunction(checkString, ['foo', ['foo', 'bar']], true);
-testFunction(checkString, ['bar', ['foo', 'bar']], true);
-testFunction(checkString, ['baz', ['foo', 'bar']], false);
-testFunction(checkString, ['foo', (value: string) => value === 'foo'], true);
-testFunction(checkString, ['bar', (value: string) => value === 'foo'], false);
-testFunction(checkString, ['fo', /^fo+$/], true);
-testFunction(checkString, ['foo', /^fo+$/], true);
-testFunction(checkString, ['fooo', /^fo+$/], true);
-testFunction(checkString, ['fooo ', /^fo+$/], false);
+for (const {input, expected} of cases) {
+    ava(`${input.join(',')} → ${expected}`, (t) => {
+        t.is(checkString(...input), expected);
+    });
+}

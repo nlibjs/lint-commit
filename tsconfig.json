@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "esnext",
-        "module": "commonjs",
+        "module": "esnext",
         "moduleResolution": "node",
         "strict": true,
         "resolveJsonModule": true,
@@ -11,12 +11,6 @@
         "noImplicitReturns": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "baseUrl": "./node_modules",
-        "paths": {
-            "@nlib/date": ["@nlib/date/esm"],
-            "@nlib/global": ["@nlib/global/esm"],
-            "@nlib/typing": ["@nlib/typing/esm"],
-            "@nlib/test": ["@nlib/test/esm"]
-        }
+        "outDir": "./lib"
     }
 }

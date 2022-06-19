@@ -1,9 +1,15 @@
-import {testAsyncFunction} from '@nlib/test';
+import ava from 'ava';
+import {fileURLToPath} from 'url';
 import {getCommitMessageFile} from './getCommitMessageFile';
 
+const moduleId = fileURLToPath(import.meta.url);
+
+ava(`${moduleId} → ${moduleId}`, async (t) => {
+    t.is(await getCommitMessageFile(moduleId), moduleId);
+});
+
 const EnvName = 'CommitMessageFile';
-
-process.env[EnvName] = module.id;
-
-testAsyncFunction(getCommitMessageFile, [module.id], module.id);
-testAsyncFunction(getCommitMessageFile, [EnvName], module.id);
+ava(`${EnvName} → ${moduleId}`, async (t) => {
+    process.env[EnvName] = moduleId;
+    t.is(await getCommitMessageFile(EnvName), moduleId);
+});
