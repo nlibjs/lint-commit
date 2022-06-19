@@ -1,20 +1,81 @@
-import {testFunction, error} from '@nlib/test';
+import type {ThrowsExpectation} from 'ava';
+import ava from 'ava';
 import {parseSubjectLine} from './parseSubjectLine';
+import type {MessageConfig} from './types';
 
-testFunction(parseSubjectLine, ['chore: subject'], {
-    type: 'chore',
-    scope: null,
-    subject: 'subject',
-});
-testFunction(parseSubjectLine, ['chore subject'], error({code: 'NoCommitType'}));
-testFunction(parseSubjectLine, ['c: subject'], error({code: 'InvaildCommitType'}));
-testFunction(parseSubjectLine, ['chore(scope): subject'], {
-    type: 'chore',
-    scope: 'scope',
-    subject: 'subject',
-});
-testFunction(parseSubjectLine, ['chore(scope: subject'], error({code: 'UnclosedParenthesis'}));
-testFunction(parseSubjectLine, ['chore(scope ): subject'], error({code: 'InvaildCommitScope'}));
-testFunction(parseSubjectLine, ['chore(scope) subject'], error({code: 'NoColon'}));
-testFunction(parseSubjectLine, ['chore(scope):subject'], error({code: 'NoSpaceBeforeSubject'}));
-testFunction(parseSubjectLine, ['chore(scope): B', {subject: /^A/}], error({code: 'InvalidSubject'}));
+interface Case {
+    input: string,
+    expected: ReturnType<typeof parseSubjectLine>,
+}
+
+const cases: Array<Case> = [
+    {
+        input: 'chore: subject',
+        expected: {
+            type: 'chore',
+            scope: null,
+            subject: 'subject',
+        },
+    },
+    {
+        input: 'chore(scope): subject',
+        expected: {
+            type: 'chore',
+            scope: 'scope',
+            subject: 'subject',
+        },
+    },
+];
+
+for (const {input, expected} of cases) {
+    ava(`${input} → ${JSON.stringify(expected)}`, (t) => {
+        t.deepEqual(parseSubjectLine(input), expected);
+    });
+}
+
+interface ErrorCase {
+    input: string,
+    config?: Partial<MessageConfig>,
+    expected: ThrowsExpectation,
+}
+
+const errorCases: Array<ErrorCase> = [
+    {
+        input: 'chore subject',
+        expected: {code: 'NoCommitType'},
+    },
+    {
+        input: 'c: subject',
+        expected: {code: 'InvaildCommitType'},
+    },
+    {
+        input: 'chore(scope: subject',
+        expected: {code: 'UnclosedParenthesis'},
+    },
+    {
+        input: 'chore(scope ): subject',
+        expected: {code: 'InvaildCommitScope'},
+    },
+    {
+        input: 'chore(scope) subject',
+        expected: {code: 'NoColon'},
+    },
+    {
+        input: 'chore(scope):subject',
+        expected: {code: 'NoSpaceBeforeSubject'},
+    },
+    {
+        input: 'chore(scope): B',
+        config: {subject: /^A/},
+        expected: {code: 'InvalidSubject'},
+    },
+];
+
+for (const {input, expected, config} of errorCases) {
+    ava(`${input} → ${JSON.stringify(expected)}`, (t) => {
+        t.throws(() => {
+            parseSubjectLine(input, config);
+        }, expected);
+    });
+}
+
