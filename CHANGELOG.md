@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.1 (2022-06-19)
+
+### Code Refactoring
+
+- use commander ([22a815a](https://github.com/nlibjs/lint-commit/commit/22a815af37400268bb400ee13acc5e8fcd6bcd18))
+
+### Continuous Integration
+
+- add node 18 and delete node 12 ([79a2be2](https://github.com/nlibjs/lint-commit/commit/79a2be2bc6557254552361dd677f688d69f5e845))
+
+### Dependency Upgrades
+
+- add @nlib/changelog ([3c6142d](https://github.com/nlibjs/lint-commit/commit/3c6142d9583e595ea98f3b6dd2cb99e7d45c0b22))
+- delete @nlib/typing ([c472ba2](https://github.com/nlibjs/lint-commit/commit/c472ba2a0cb66469cd3c1608ad7c6365df5e3db0))
+
+
 ## v0.1.8 (2021-09-09)
 
 ### Code Refactoring
