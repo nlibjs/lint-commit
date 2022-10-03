@@ -40,7 +40,7 @@
         "version:add": "git add ."
     },
     "dependencies": {
-        "commander": "9.4.0",
+        "commander": "9.4.1",
         "semver": "7.3.7"
     },
     "devDependencies": {
