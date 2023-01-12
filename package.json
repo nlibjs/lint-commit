@@ -44,7 +44,7 @@
         "semver": "7.3.8"
     },
     "devDependencies": {
-        "@nlib/changelog": "0.2.3",
+        "@nlib/changelog": "0.2.4",
         "@nlib/eslint-config": "3.18.0",
         "@nlib/esmify": "0.3.2",
         "@nlib/githooks": "0.1.0",
