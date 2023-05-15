@@ -41,7 +41,7 @@
     },
     "dependencies": {
         "commander": "9.5.0",
-        "semver": "7.5.0"
+        "semver": "7.5.1"
     },
     "devDependencies": {
         "@nlib/changelog": "0.2.4",
