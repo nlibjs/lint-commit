@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import {Command} from 'commander';
 import * as console from 'console';
 import * as fs from 'fs';
 import * as process from 'process';
 import * as util from 'util';
+import {Command} from 'commander';
 import {checkString} from './checkString';
 import {getCommitMessageFile} from './getCommitMessageFile';
 import {ignorePatterns} from './ignore';

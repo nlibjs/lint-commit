@@ -1,13 +1,14 @@
-import ava from 'ava';
 import {promises as afs} from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import {fileURLToPath} from 'url';
+import ava from 'ava';
 import {exec} from './exec.private';
+
 const scriptPath = fileURLToPath(new URL('./cli.mjs', import.meta.url));
 
 ava('lint a commit message', async (t) => {
-    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'indexen'));
+    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'lint-commit'));
     const messageFile = path.join(directory, 'COMMIT_EDITMSG');
     await afs.writeFile(messageFile, [
         '# Comment',
@@ -21,7 +22,7 @@ ava('lint a commit message', async (t) => {
 });
 
 ava('ignore message', async (t) => {
-    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'indexen'));
+    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'lint-commit'));
     const messageFile = path.join(directory, 'COMMIT_EDITMSG');
     await afs.writeFile(messageFile, '1.2.3');
     t.log(await exec(`node ${scriptPath} --input ${messageFile}`));
@@ -29,7 +30,7 @@ ava('ignore message', async (t) => {
 });
 
 ava('lint an invalid commit message', async (t) => {
-    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'indexen'));
+    const directory = await afs.mkdtemp(path.join(os.tmpdir(), 'lint-commit'));
     const messageFile = path.join(directory, 'COMMIT_EDITMSG');
     await afs.writeFile(messageFile, [
         '# Comment',

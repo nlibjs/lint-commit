@@ -1,5 +1,6 @@
 import ava from 'ava';
 import {checkString} from './checkString';
+
 interface Case {
     input: Parameters<typeof checkString>,
     expected: boolean,
