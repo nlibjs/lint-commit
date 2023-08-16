@@ -1,6 +1,29 @@
 # Changelog
 
-## v0.2.1 (2022-06-19)
+## v1.0.0 (2023-08-16)
+
+### Breaking Changes
+
+- remove index to export nothing from this module ([392319d](https://github.com/nlibjs/lint-commit/commit/392319d13eaf5856b21d0166d60a9f14cc90f382))
+
+### Bug Fixes
+
+- author.url ([640f44a](https://github.com/nlibjs/lint-commit/commit/640f44ac106899106ffa43cf4fbf5ec84a72bd92))
+
+### Styles
+
+- fix some eslint errors ([492e85c](https://github.com/nlibjs/lint-commit/commit/492e85cc77f242a8bdb88b3b62fa1e2fabd85eeb))
+
+### Continuous Integration
+
+- v2 → v3 ([99a5e0f](https://github.com/nlibjs/lint-commit/commit/99a5e0f1d130092a77ece71f0b6b39e2843ca137))
+
+### Dependency Upgrades
+
+- upgrade some dependencies ([8b73372](https://github.com/nlibjs/lint-commit/commit/8b73372869fd5a07ff029871c01b957b7cf47bc3))
+
+
+## v0.2.0 (2022-06-19)
 
 ### Code Refactoring
 
