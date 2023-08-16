@@ -26,27 +26,22 @@
     "nlib-lint-commit": "./lib/cli.mjs"
   },
   "scripts": {
-    "build": "run-s build:*",
-    "build:tsc": "tsc",
-    "build:esmify": "esmify \"lib/**\"",
-    "test": "run-s test:*",
-    "test:build": "run-s test:build:*",
-    "test:build:tsc": "tsc",
-    "test:build:esmify": "esmify --keepSourceMap \"lib/**\"",
+    "build": "tsc",
+    "test": "run-s build test:*",
     "test:unit": "ava",
     "lint": "eslint --ext .ts --ext .js src",
-    "version": "run-s build version:*",
-    "version:changelog": "nlib-changelog --output CHANGELOG.md",
-    "version:add": "git add ."
+    "postversion": "run-s postversion:*",
+    "postversion:changelog": "nlib-changelog --output CHANGELOG.md",
+    "postversion:add": "git add .",
+    "postversion:amend": "git commit -m \"$(git log -1 --format=%s)\" --amend"
   },
   "dependencies": {
     "commander": "11.0.0",
     "semver": "7.5.4"
   },
   "devDependencies": {
-    "@nlib/changelog": "0.2.4",
+    "@nlib/changelog": "0.3.0",
     "@nlib/eslint-config": "3.19.7",
-    "@nlib/esmify": "0.3.3",
     "@nlib/githooks": "0.1.0",
     "@types/node": "20.5.0",
     "@types/semver": "7.5.0",
