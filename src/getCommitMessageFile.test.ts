@@ -1,5 +1,5 @@
-import ava from 'ava';
 import {fileURLToPath} from 'url';
+import ava from 'ava';
 import {getCommitMessageFile} from './getCommitMessageFile';
 
 const moduleId = fileURLToPath(import.meta.url);

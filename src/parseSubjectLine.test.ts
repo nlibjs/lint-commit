@@ -36,7 +36,7 @@ for (const {input, expected} of cases) {
 interface ErrorCase {
     input: string,
     config?: Partial<MessageConfig>,
-    expected: ThrowsExpectation,
+    expected: ThrowsExpectation<Error>,
 }
 
 const errorCases: Array<ErrorCase> = [
@@ -73,9 +73,6 @@ const errorCases: Array<ErrorCase> = [
 
 for (const {input, expected, config} of errorCases) {
     ava(`${input} → ${JSON.stringify(expected)}`, (t) => {
-        t.throws(() => {
-            parseSubjectLine(input, config);
-        }, expected);
+        t.throws(() => parseSubjectLine(input, config), expected);
     });
 }
-
