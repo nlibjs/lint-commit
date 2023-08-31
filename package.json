@@ -30,10 +30,7 @@
     "test": "run-s build test:*",
     "test:unit": "ava",
     "lint": "eslint src",
-    "postversion": "run-s postversion:*",
-    "postversion:changelog": "nlib-changelog --output CHANGELOG.md",
-    "postversion:add": "git add .",
-    "postversion:amend": "git commit -m \"$(git log -1 --format=%s)\" --amend"
+    "version": "nlib-changelog --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "commander": "11.0.0",
