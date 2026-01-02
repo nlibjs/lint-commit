@@ -33,7 +33,7 @@
     "version": "nlib-changelog --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
-    "commander": "11.1.0",
+    "commander": "14.0.2",
     "semver": "7.7.3"
   },
   "devDependencies": {
