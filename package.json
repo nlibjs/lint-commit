@@ -13,7 +13,7 @@
   "homepage": "https://github.com/nlibjs/lint-commit",
   "repository": "https://github.com/nlibjs/lint-commit",
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "type": "module",
   "main": "./lib/cli.mjs",
@@ -31,7 +31,7 @@
     "test": "run-s build test:*",
     "test:unit": "ava",
     "lint": "eslint src",
-    "version": "nlib-changelog --output CHANGELOG.md && git add CHANGELOG.md"
+    "version": "changelog --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "commander": "11.1.0",
@@ -40,7 +40,6 @@
   "devDependencies": {
     "@nlib/changelog": "0.3.2",
     "@nlib/eslint-config": "3.20.5",
-    "@nlib/githooks": "0.2.2",
     "@types/node": "20.12.2",
     "@types/semver": "7.7.1",
     "@typescript-eslint/eslint-plugin": "6.21.0",
