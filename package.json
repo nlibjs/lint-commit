@@ -13,7 +13,7 @@
   "homepage": "https://github.com/nlibjs/lint-commit",
   "repository": "https://github.com/nlibjs/lint-commit",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "type": "module",
   "main": "./lib/cli.mjs",

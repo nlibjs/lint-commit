@@ -5,7 +5,7 @@
 
 Lint your commit messages.
 
-Requires Node.js 18 or newer, matching the oldest version tested in CI.
+Requires Node.js 22 or newer, matching the oldest version tested in CI.
 
 ## Message Format
 
