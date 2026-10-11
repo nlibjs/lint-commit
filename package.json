@@ -13,7 +13,7 @@
   "homepage": "https://github.com/nlibjs/lint-commit",
   "repository": "https://github.com/nlibjs/lint-commit",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "type": "module",
   "main": "./lib/cli.mjs",
@@ -34,7 +34,7 @@
     "version": "changelog --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
-    "commander": "11.1.0",
+    "commander": "15.0.0",
     "semver": "7.8.5"
   },
   "devDependencies": {
@@ -42,9 +42,9 @@
     "@nlib/eslint-config": "3.20.5",
     "@types/node": "20.12.2",
     "@types/semver": "7.7.1",
-    "@typescript-eslint/eslint-plugin": "6.21.0",
-    "@typescript-eslint/parser": "6.21.0",
-    "ava": "5.3.1",
+    "@typescript-eslint/eslint-plugin": "8.71.1",
+    "@typescript-eslint/parser": "8.71.1",
+    "ava": "8.0.1",
     "eslint": "8.57.1",
     "lint-staged": "14.0.1",
     "npm-run-all": "4.1.5",
@@ -57,7 +57,27 @@
     ],
     "env": {
       "node": true
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.mts",
+          "*.cts",
+          "*.tsx"
+        ],
+        "rules": {
+          "@typescript-eslint/no-throw-literal": "off",
+          "@typescript-eslint/ban-types": "off",
+          "@typescript-eslint/no-useless-template-literals": "off",
+          "@typescript-eslint/only-throw-error": "error",
+          "@typescript-eslint/no-empty-object-type": "error",
+          "@typescript-eslint/no-unsafe-function-type": "error",
+          "@typescript-eslint/no-wrapper-object-types": "error",
+          "@typescript-eslint/no-unnecessary-template-expression": "error"
+        }
+      }
+    ]
   },
   "ava": {
     "files": [

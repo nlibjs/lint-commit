@@ -2,13 +2,7 @@ import * as fs from 'fs';
 import { LintError } from './LintError.mjs';
 
 const isRecordLike = (input: unknown): input is Record<string, unknown> => {
-  switch (typeof input) {
-    case 'object':
-    case 'function':
-      return true;
-    default:
-      return false;
-  }
+  return typeof input === 'object' || typeof input === 'function';
 };
 const statOrNull = async (input: fs.PathLike) => {
   return await fs.promises.stat(input).catch((error) => {

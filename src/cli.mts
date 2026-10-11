@@ -25,7 +25,7 @@ program.version(packageJson.version);
 program.action(async ({ input }: { input: string }) => {
   const messageFile = await getCommitMessageFile(input);
   const message = await fs.promises.readFile(messageFile, 'utf8');
-  const subjectLine = readNonCommentLine(message).next().value || '';
+  const subjectLine = readNonCommentLine(message).next().value ?? '';
   if (ignorePatterns.every((pattern) => !checkString(subjectLine, pattern))) {
     const result = parseMessage(message);
     process.stdout.write(util.inspect(result));
