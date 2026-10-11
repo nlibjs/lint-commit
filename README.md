@@ -5,6 +5,8 @@
 
 Lint your commit messages.
 
+Requires Node.js 22 or newer, matching the oldest version tested in CI.
+
 ## Message Format
 
 ```
@@ -25,7 +27,7 @@ Then, set `@nlib/lint-commit` to `commit-msg` hook.
 
 ```sh
 #!/bin/sh
-npx @nlib/lint-commit --input $1
+npx @nlib/lint-commit --input "$1"
 ```
 
 [husky]: https://www.npmjs.com/package/husky
