@@ -8,6 +8,6 @@ export const parseMessage = (
 ): ParseMessageResult => {
   const lineReader = readNonCommentLine(message);
   const result = parseSubjectLine(lineReader.next().value || '', messageConfig);
-  result.body = [...lineReader].join(messageConfig.eol || '\n').trim();
+  result.body = [...lineReader].join(messageConfig.eol ?? '\n').trim();
   return result;
 };
