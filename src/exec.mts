@@ -18,8 +18,8 @@ export const exec = async (
         reject(error);
       } else {
         resolve({
-          stdout: stdout.trim(),
-          stderr: stderr.trim(),
+          stdout: stdout.toString().trim(),
+          stderr: stderr.toString().trim(),
         });
       }
     });
