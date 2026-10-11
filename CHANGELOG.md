@@ -5,7 +5,7 @@
 ### Breaking Changes
 
 - require Node.js 22.12.0 or newer (previously 14) ([be2277e](https://github.com/nlibjs/lint-commit/commit/be2277e93e402a7978a93b9aff73a23a001b96ac), [8407470](https://github.com/nlibjs/lint-commit/commit/8407470053c13132233c49ccba0940be4d884dff))
-- reject empty or multi-line subjects, and match the Merge/Revert/version skip patterns against the subject line only ([e3dec54](https://github.com/nlibjs/lint-commit/commit/e3dec5412db2b219d9cbbce63dfeff7612e62f19))
+- reject whitespace-only subjects and subjects with leading whitespace (e.g. `feat:  subject`), and match the Merge/Revert/version skip patterns against the subject line only ([e3dec54](https://github.com/nlibjs/lint-commit/commit/e3dec5412db2b219d9cbbce63dfeff7612e62f19))
 
 ### Bug Fixes
 
