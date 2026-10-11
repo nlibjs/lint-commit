@@ -19,7 +19,8 @@
   "main": "./lib/cli.mjs",
   "files": [
     "lib",
-    "!**/*.test.*"
+    "!**/*.test.*",
+    "!**/*.map"
   ],
   "bin": {
     "lint-commit": "./lib/cli.mjs",
