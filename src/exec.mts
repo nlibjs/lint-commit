@@ -15,11 +15,15 @@ export const exec = async (
       if (error) {
         console.info(`--- stdout ---\n${stdout}`);
         console.info(`--- stderr ---\n${stderr}`);
-        reject(error);
+        reject(
+          error instanceof Error
+            ? error
+            : new Error('Subprocess execution failed', { cause: error }),
+        );
       } else {
         resolve({
-          stdout: stdout.trim(),
-          stderr: stderr.trim(),
+          stdout: stdout.toString().trim(),
+          stderr: stderr.toString().trim(),
         });
       }
     });
