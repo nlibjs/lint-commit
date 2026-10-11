@@ -40,7 +40,7 @@
   "devDependencies": {
     "@nlib/changelog": "0.4.0",
     "@nlib/eslint-config": "3.20.5",
-    "@types/node": "20.12.2",
+    "@types/node": "26.6.4",
     "@types/semver": "7.7.1",
     "@typescript-eslint/eslint-plugin": "8.71.1",
     "@typescript-eslint/parser": "8.71.1",
