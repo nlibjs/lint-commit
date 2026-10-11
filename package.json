@@ -30,7 +30,7 @@
     "test": "run-s build test:*",
     "test:unit": "ava",
     "lint": "eslint src",
-    "version": "nlib-changelog --output CHANGELOG.md && git add CHANGELOG.md"
+    "version": "changelog --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "commander": "11.1.0",
