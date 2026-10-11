@@ -6,7 +6,7 @@ const semver = createRequire(import.meta.url)('semver') as unknown as {
 };
 
 export const ignorePatterns: Array<StringMatcher> = [
-  /^Merged? /m,
+  /^Merged? /,
   /^(R|r)evert /,
   (input) => semver.valid(input.trim()) !== null,
 ];

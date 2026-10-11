@@ -7,7 +7,7 @@ export const parseMessage = (
   messageConfig: Partial<MessageConfig & { eol: string }> = {},
 ): ParseMessageResult => {
   const lineReader = readNonCommentLine(message);
-  const result = parseSubjectLine(lineReader.next().value || '', messageConfig);
+  const result = parseSubjectLine(lineReader.next().value ?? '', messageConfig);
   result.body = [...lineReader].join(messageConfig.eol ?? '\n').trim();
   return result;
 };

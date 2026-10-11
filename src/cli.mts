@@ -8,6 +8,7 @@ import { checkString } from './checkString.mjs';
 import { getCommitMessageFile } from './getCommitMessageFile.mjs';
 import { ignorePatterns } from './ignore.mjs';
 import { parseMessage } from './parseMessage.mjs';
+import { readNonCommentLine } from './readNonCommentLine.mjs';
 
 const packageJson = JSON.parse(
   fs.readFileSync(new URL('../package.json', import.meta.url), 'utf-8'),
@@ -24,7 +25,8 @@ program.version(packageJson.version);
 program.action(async ({ input }: { input: string }) => {
   const messageFile = await getCommitMessageFile(input);
   const message = await fs.promises.readFile(messageFile, 'utf8');
-  if (ignorePatterns.every((pattern) => !checkString(message, pattern))) {
+  const subjectLine = readNonCommentLine(message).next().value ?? '';
+  if (ignorePatterns.every((pattern) => !checkString(subjectLine, pattern))) {
     const result = parseMessage(message);
     process.stdout.write(util.inspect(result));
   }

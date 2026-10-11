@@ -25,6 +25,14 @@ const cases: Array<Case> = [
       subject: 'subject',
     },
   },
+  {
+    input: 'feat: 日本語の件名 🌱',
+    expected: {
+      type: 'feat',
+      scope: null,
+      subject: '日本語の件名 🌱',
+    },
+  },
 ];
 
 for (const { input, expected } of cases) {
@@ -40,6 +48,16 @@ interface ErrorCase {
 }
 
 const errorCases: Array<ErrorCase> = [
+  {
+    input: 'feat: ',
+    expected: { code: 'NoSubject' },
+  },
+  ...['feat:  ', 'feat: \t', 'feat:  subject', 'feat: subject\nbody'].map(
+    (input) => ({
+      input,
+      expected: { code: 'InvalidSubject' },
+    }),
+  ),
   {
     input: 'chore subject',
     expected: { code: 'NoCommitType' },
@@ -72,7 +90,7 @@ const errorCases: Array<ErrorCase> = [
 ];
 
 for (const { input, expected, config } of errorCases) {
-  ava(`${input} → ${JSON.stringify(expected)}`, (t) => {
+  ava(`${JSON.stringify(input)} → ${JSON.stringify(expected)}`, (t) => {
     t.throws(() => parseSubjectLine(input, config), expected);
   });
 }
