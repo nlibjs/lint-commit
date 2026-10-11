@@ -19,7 +19,7 @@ export const DefaultMessageConfig: MessageConfig = {
     'breaking',
   ],
   scope: /^[\w-]+$/,
-  subject: () => true,
+  subject: /^\S[^\r\n]*$/,
   maxLength: Infinity,
 };
 
