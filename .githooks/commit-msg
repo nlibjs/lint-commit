@@ -1,3 +1,0 @@
-#!/bin/sh
-npm run build
-node lib/cli.mjs --input "$1"
