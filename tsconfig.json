@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "strict": true,
     "resolveJsonModule": true,
     "removeComments": true,
@@ -12,6 +12,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./lib",
-    "sourceMap": true
+    "sourceMap": true,
+    "rootDir": "./src",
+    "types": ["node"]
   }
 }
