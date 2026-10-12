@@ -1,3 +1,6 @@
+# Release and recovery: https://github.com/nlibjs/actions#release-procedure
+# npm Trusted Publisher: nlibjs/lint-commit, release.yml, environment: deployment.
+# Stage and Finalize require deployment approval when environment protection is enabled.
 name: Release
 
 on:
