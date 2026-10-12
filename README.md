@@ -31,3 +31,7 @@ Then, set `@nlib/lint-commit` to `commit-msg` hook.
 #!/bin/sh
 npx @nlib/lint-commit --input "$1"
 ```
+
+## Releases
+
+Maintainers can follow the [release guide](docs/releases.md).
