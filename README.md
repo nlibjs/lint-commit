@@ -31,8 +31,3 @@ Then, set `@nlib/lint-commit` to `commit-msg` hook.
 #!/bin/sh
 npx @nlib/lint-commit --input "$1"
 ```
-
-## Development: Git hooks
-
-Git hooks are configured explicitly by each developer. Refer to the
-[official Git hook documentation](https://git-scm.com/docs/githooks).
