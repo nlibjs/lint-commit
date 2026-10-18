@@ -38,16 +38,16 @@
     "semver": "7.8.5"
   },
   "devDependencies": {
-    "@nlib/changelog": "0.4.0",
+    "@nlib/changelog": "0.4.2",
     "@nlib/eslint-config": "3.20.5",
-    "@types/node": "26.6.4",
+    "@types/node": "26.6.5",
     "@types/semver": "7.8.0",
-    "@typescript-eslint/eslint-plugin": "8.71.1",
-    "@typescript-eslint/parser": "8.71.1",
-    "ava": "8.0.1",
+    "@typescript-eslint/eslint-plugin": "8.71.2",
+    "@typescript-eslint/parser": "8.71.2",
+    "ava": "8.0.2",
     "eslint": "8.57.1",
     "npm-run-all": "4.1.5",
-    "prettier": "3.9.9",
+    "prettier": "3.9.10",
     "typescript": "5.9.3",
     "typescript-compiler": "npm:typescript@7.0.2"
   },
