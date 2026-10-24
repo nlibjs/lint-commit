@@ -1,92 +1,59 @@
 {
-  "name": "@nlib/lint-commit",
-  "publishConfig": {
-    "access": "public"
-  },
-  "version": "2.0.0",
-  "license": "Apache-2.0",
-  "author": {
-    "name": "Kei Ito",
-    "email": "kei.itof@gmail.com",
-    "url": "https://gojabako.zone"
-  },
-  "homepage": "https://github.com/nlibjs/lint-commit",
-  "repository": "https://github.com/nlibjs/lint-commit",
-  "engines": {
-    "node": ">=22.12.0"
-  },
-  "type": "module",
-  "main": "./lib/cli.mjs",
-  "files": [
-    "lib",
-    "!**/*.test.*",
-    "!**/*.map"
-  ],
-  "bin": {
-    "lint-commit": "./lib/cli.mjs",
-    "nlib-lint-commit": "./lib/cli.mjs"
-  },
-  "scripts": {
-    "build": "node ./node_modules/typescript-compiler/bin/tsc",
-    "test": "run-s build test:*",
-    "test:unit": "ava",
-    "lint": "eslint src",
-    "version": "changelog --output CHANGELOG.md && git add CHANGELOG.md"
-  },
-  "dependencies": {
-    "commander": "15.0.0",
-    "semver": "7.8.5"
-  },
-  "devDependencies": {
-    "@nlib/changelog": "0.4.0",
-    "@nlib/eslint-config": "3.20.5",
-    "@types/node": "26.6.4",
-    "@types/semver": "7.8.0",
-    "@typescript-eslint/eslint-plugin": "8.71.1",
-    "@typescript-eslint/parser": "8.71.1",
-    "ava": "8.0.1",
-    "eslint": "8.57.1",
-    "npm-run-all": "4.1.5",
-    "prettier": "3.9.9",
-    "typescript": "5.9.3",
-    "typescript-compiler": "npm:typescript@7.0.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@nlib/eslint-config"
-    ],
-    "env": {
-      "node": true
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.ts",
-          "*.mts",
-          "*.cts",
-          "*.tsx"
-        ],
-        "rules": {
-          "@typescript-eslint/no-throw-literal": "off",
-          "@typescript-eslint/ban-types": "off",
-          "@typescript-eslint/no-useless-template-literals": "off",
-          "@typescript-eslint/only-throw-error": "error",
-          "@typescript-eslint/no-empty-object-type": "error",
-          "@typescript-eslint/no-unsafe-function-type": "error",
-          "@typescript-eslint/no-wrapper-object-types": "error",
-          "@typescript-eslint/no-unnecessary-template-expression": "error"
-        }
-      }
-    ]
-  },
-  "ava": {
-    "files": [
-      "lib/**/*.test.*(m|c)+(j|t)s*(x)"
-    ]
-  },
-  "renovate": {
-    "extends": [
-      "github>nlibjs/renovate-config"
-    ]
-  }
+	"name": "@nlib/lint-commit",
+	"publishConfig": {
+		"access": "public"
+	},
+	"version": "2.0.0",
+	"license": "Apache-2.0",
+	"author": {
+		"name": "Kei Ito",
+		"email": "kei.itof@gmail.com",
+		"url": "https://gojabako.zone"
+	},
+	"homepage": "https://github.com/nlibjs/lint-commit",
+	"repository": "https://github.com/nlibjs/lint-commit",
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"type": "module",
+	"main": "./lib/cli.mjs",
+	"files": [
+		"lib",
+		"!**/*.test.*",
+		"!**/*.map"
+	],
+	"bin": {
+		"lint-commit": "./lib/cli.mjs",
+		"nlib-lint-commit": "./lib/cli.mjs"
+	},
+	"scripts": {
+		"build": "tsc",
+		"test": "run-s build test:*",
+		"test:unit": "ava",
+		"lint": "biome check",
+		"version": "changelog --output CHANGELOG.md && git add CHANGELOG.md"
+	},
+	"dependencies": {
+		"commander": "15.0.0",
+		"semver": "7.8.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.15",
+		"@nlib/changelog": "0.4.0",
+		"@types/node": "26.6.4",
+		"@types/semver": "7.8.0",
+		"ava": "8.0.1",
+		"npm-run-all": "4.1.5",
+		"typescript": "7.0.2"
+	},
+	"ava": {
+		"files": [
+			"lib/**/*.test.*(m|c)+(j|t)s*(x)"
+		]
+	},
+	"renovate": {
+		"extends": [
+			"github>nlibjs/renovate-config"
+		]
+	}
 }

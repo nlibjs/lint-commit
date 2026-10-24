@@ -1,19 +1,19 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "strict": true,
-    "resolveJsonModule": true,
-    "removeComments": true,
-    "declaration": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "./lib",
-    "sourceMap": true,
-    "rootDir": "./src",
-    "types": ["node"]
-  }
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"strict": true,
+		"resolveJsonModule": true,
+		"removeComments": true,
+		"declaration": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "./lib",
+		"sourceMap": true,
+		"rootDir": "./src",
+		"types": ["node"]
+	}
 }
