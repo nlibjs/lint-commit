@@ -1,33 +1,33 @@
-import * as fs from 'fs';
-import { LintError } from './LintError.mjs';
+import * as fs from "node:fs";
+import { LintError } from "./LintError.mjs";
 
 const isRecordLike = (input: unknown): input is Record<string, unknown> => {
-  return typeof input === 'object' || typeof input === 'function';
+	return typeof input === "object" || typeof input === "function";
 };
 const statOrNull = async (input: fs.PathLike) => {
-  return await fs.promises.stat(input).catch((error) => {
-    if (isRecordLike(error) && error.code === 'ENOENT') {
-      return null;
-    }
-    throw error;
-  });
+	return await fs.promises.stat(input).catch((error) => {
+		if (isRecordLike(error) && error.code === "ENOENT") {
+			return null;
+		}
+		throw error;
+	});
 };
 export const getCommitMessageFile = async (
-  filePathOrEnvironmentVariableName: string,
+	filePathOrEnvironmentVariableName: string,
 ): Promise<string> => {
-  let stats = await statOrNull(filePathOrEnvironmentVariableName);
-  if (stats) {
-    return filePathOrEnvironmentVariableName;
-  }
-  const environmentValue = process.env[filePathOrEnvironmentVariableName];
-  if (environmentValue) {
-    stats = await statOrNull(environmentValue);
-    if (stats) {
-      return environmentValue;
-    }
-  }
-  throw new LintError({
-    code: 'NoMessageFile',
-    message: 'Cannot find the message file',
-  });
+	let stats = await statOrNull(filePathOrEnvironmentVariableName);
+	if (stats) {
+		return filePathOrEnvironmentVariableName;
+	}
+	const environmentValue = process.env[filePathOrEnvironmentVariableName];
+	if (environmentValue) {
+		stats = await statOrNull(environmentValue);
+		if (stats) {
+			return environmentValue;
+		}
+	}
+	throw new LintError({
+		code: "NoMessageFile",
+		message: "Cannot find the message file",
+	});
 };
